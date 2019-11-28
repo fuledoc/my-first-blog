@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div>
+      검색 결과 수 : {{ posts.count }}
+    </div>
+    {% for post in posts %}
+        <div class="post">
+          <h1><a href="">{{ post.title }}</a></h1>
+          <p>{{ post.link|linebreaksbr }}</p>
+          <p>검색 일 : {{ post.published_date }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

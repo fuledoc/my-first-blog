@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div>
+      <h1>예약일정</h1>
+
+    </div>
+    {% for post in posts %}
+        <div style="border: 3px dotted #000000; height: auto; padding:10px;">
+          <!-- <h1><a href=""></a></h1> -->
+          <table style="width:100%; table-layout: fixed; overflow-wrap: break-word;">
+            <tr>
+              <td style="width:90%;"><strong>질의어:</strong> {{ post.title }}</td>
+            </tr>
+            <tr>
+              <td><strong>입력날짜:</strong> {{ post.published_date }}</td>
+            </tr>
+            <!-- </table> -->
+            <tr>
+              {% if post.period == 'd9' %}
+              <td><strong>예약 검색주기 : 매일 9시</strong></td>
+              {% elif post.period == 'w9' %}
+              <td><strong>예약 검색주기 : 매주 9시</strong></td>
+              {% else %}
+              {% endif %}
+            </tr>
+          </table>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

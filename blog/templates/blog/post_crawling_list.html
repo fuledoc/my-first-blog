@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="date">
+      특허 수 : {{ posts.count }}
+    </div>
+    {% for post in posts %}
+        <div class="post">
+            <p class="date">published: {{ post.published_date|date:'d-m-Y' }}</p>
+            <h1><a href="{% url 'post_crawling_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>https://beomi.github.io{{ post.link }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

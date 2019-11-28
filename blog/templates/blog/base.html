@@ -1,15 +1,37 @@
 {% load static %}
 <html>
     <head>
-        <title>Django Girls blog</title>
+        <title>특허 침해 사례 검색 시스템</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
     </head>
     <body>
         <div class="page-header">
-            <h1><a href="/">Django Girls Blog</a></h1>
+          {% if user.is_authenticated %}
+            <!-- <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'crawling_new' %}" class="top-menu"><span class="glyphicon glyphicon-download"></span></a>
+
+            <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a> -->
+
+            <!-- <a href="{% url 'post_crawling_list' %}" class="top-menu"><span class="glyphicon glyphicon-th-list"></span></a> -->
+            <!-- <a href="{% url 'google_new' %}" class="top-menu"><span class="glyphicon glyphicon-download-alt"></span></a>
+            <a href="{% url 'post_google_detail_list' %}" class="top-menu"><span class="glyphicon glyphicon-th-list"></span></a> -->
+            <!-- <a href="{% url 'post_google_celeryone_draft' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a> -->
+            <!-- <a href="{% url 'post_google_celeryone_list' %}" class="top-menu"><span class="glyphicon glyphicon-tag"></span></a> -->
+            <!-- <a href="{% url 'post_google_celeryone_draft' %}" class="top-menu"><span class="glyphicon glyphicon-tag"></span></a> -->
+            <!-- <a href="{% url 'post_google_celery' %}" class="top-menu"><span class="glyphicon glyphicon-tag"></span></a>  -->
+            <a href="{% url 'post_google_list' %}" class="top-menu"><span class="glyphicon glyphicon-th-list"></span></a>
+            <a href="{% url 'post_google_search' %}" class="top-menu"><span class="glyphicon glyphicon-search"></span></a>
+
+            <p class="top-menu">{{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+          {% else %}
+            <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+          {% endif %}
+            <h1><a href="/">특허 침해 사례 검색 시스템</a></h1>
         </div>
         <div class="content container">
             <div class="row">

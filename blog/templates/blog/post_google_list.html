@@ -1,0 +1,52 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div>
+      <h1>검색결과</h1>
+
+    </div>
+    {% for post in posts %}
+        <div style="border: 3px dotted #000000; height: auto; padding:10px;">
+          <!-- <h1><a href=""></a></h1> -->
+          <table style="width:100%; table-layout: fixed; overflow-wrap: break-word;">
+            <tr>
+              <td style="width:90%;"><strong>질의어:</strong> {{ post.title }}</td>
+              <td style="width:10%;" align="right"><a class="btn btn-default" href="{% url 'google_comment_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a></td>
+            </tr>
+            <tr>
+              <td><strong>입력날짜:</strong> {{ post.published_date }}</td>
+            </tr>
+            <!-- </table> -->
+            <tr>
+              {% if post.period == 't' %}
+              <td><strong>검색주기 : 모든날짜</strong></td>
+              {% elif post.period == 'h' %}
+              <td><strong>검색주기 : 지난 1시간</strong></td>
+              {% elif post.period == 'd' %}
+              <td><strong>검색주기 : 지난 1일</strong></td>
+              {% elif post.period == 'w' %}
+              <td><strong>검색주기 : 지난 1주</strong></td>
+              {% elif post.period == 'm' %}
+              <td><strong>검색주기 : 지난 1개월</strong></td>
+              {% elif post.period == 'y' %}
+              <td><strong>검색주기 : 지난 1년</strong></td>
+              {% elif post.period == 'd9' %}
+              <td><strong>검색주기 : 매일 9시</strong></td>
+              {% elif post.period == 'w9' %}
+              <td><strong>검색주기 : 매주 9시</strong></td>
+              {% else %}
+              {% endif %}
+            </tr>
+            <tr>
+              <td>
+                <a class="btn btn-default" href="{% url 'post_google_detail' pk=post.pk %}">결과보기</a>
+                {% if post.period == 'd9' or post.period == 'w9'%}
+                  (일 수 : {{ post.searchcomments.count }} )
+                {% endif %}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

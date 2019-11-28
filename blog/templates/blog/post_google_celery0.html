@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div>
+      <h1>시험검색결과</h1>
+
+    </div>
+    {% for post in posts %}
+        <div style="border: 3px dotted #000000; height: auto; padding:10px;">
+          <!-- <h1><a href=""></a></h1> -->
+          <table style="width:100%; table-layout: fixed; overflow-wrap: break-word;">
+            <tr>
+              <td style="width:50%;"><strong>질의어:</strong> {{ post.search_title }}</td>
+              <td style="width:50%;"><strong>내용:</strong> {{ post.title }}</td>
+            </tr>
+            <tr>
+              <td style="width:100%;" colspan="2"><strong>주소:</strong> {{ post.link }}</td>
+            </tr>
+            <tr>
+              <td style="width:100%;"><strong>입력날짜:</strong> {{ post.published_date }}</td>
+            </tr>
+          </table>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}
